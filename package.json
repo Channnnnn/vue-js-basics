@@ -1,0 +1,22 @@
+{
+  "name": "vue-js-basics",
+  "version": "1.0.0",
+  "description": "JS basic for vuejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Channnnnn/vue-js-basics.git"
+  },
+  "author": "Channnnnn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Channnnnn/vue-js-basics/issues"
+  },
+  "homepage": "https://github.com/Channnnnn/vue-js-basics#readme",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}
