@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div style="padding: 2em; background-color: teal;">
+    <p>Click inside this div to log `onClick` event<br>
+    Press Enter to random background color<br>
+    Scroll stripe div to log displaying area</p>
+    <input type="checkbox" id="toggle" value="toggle">
+    <label for="toggle">Toggle</label>
+    <div id="scrollParent" style="height:100px; overflow: scroll;">
+      <div style="height: 500px; background: repeating-linear-gradient(60deg, black 0px, black 20px, white 21px, white 40px, black 41px);"></div>
+    </div>
+  </div>
+  <button onclick="onClearListeners()">Remove listeners</button>
+  <script>
+    const container = document.querySelector('body > div');
+    const scrollParent = document.getElementById('scrollParent');
+
+    function onClick(event) {
+      console.log('=================');
+      console.log('event.target', event.target); // clicked element (deepest)
+      console.log('event.currentTarget', event.currentTarget); // element where event is registered (top-level)
+    }
+
+    const randHex = () => Math.round(Math.random()*255).toString(16); // random hex value between 0-255 
+    function onKeyEnter(event) {
+      if (event.key === 'Enter') {
+        const label = document.getElementsByTagName('label')[0];
+        const hex = `#${randHex()}${randHex()}${randHex()}60`; // compose hex color with 37.6% opacity
+        container.style.backgroundColor = hex;
+        label.innerText = `Toggle (${hex.toUpperCase()})`;
+      }
+    }
+    
+    function onScroll(event) {
+      const {scrollTop, clientHeight} = event.target;
+      console.log(`Display range ${scrollTop}-${scrollTop + clientHeight}`);
+    }
+    container.addEventListener('click', onClick);
+    scrollParent.onscrollend = onScroll;
+    document.addEventListener('keydown', onKeyEnter);
+
+    function onClearListeners() {
+      if (confirm('Remove all listeners from this page?'))
+      console.log('clear!')
+      container.removeEventListener('click', onClick);
+      scrollParent.onscrollend = null;
+      document.removeEventListener('keydown', onKeyEnter);
+    }
+  </script>
+</body>
+</html>

@@ -43,3 +43,9 @@ console.log(calculatePriceVATIncluded([
   { price: 30, count: 4 },
   { price: 4, count: 12 }
 ]))
+
+// To pass function: Do not put parentheses after function name
+// otherwise it will evaluate value
+//
+// someFunction(plusOne(4)) -------> someFunction(5)
+// someFunction(plusOne) -------> someFunction([Function plusOne]) /* `plusOne` can be call inside `someFunction` */
