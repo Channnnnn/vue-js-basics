@@ -15,7 +15,6 @@ const arrowFunction = (value) => { return value + 1 }
 const terseArrowFunction = value => value + 1
 
 
-
 /* Fancy use of functions */
 /* Example TotalPriceOperation function */
 function passFunctionAsArgument(functionToBeExecuted) {
@@ -25,7 +24,7 @@ function passFunctionAsArgument(functionToBeExecuted) {
   ]
   return functionToBeExecuted(fakeDataFromDb) // Call passed function
 }
-/* Create reusable `calculatePrice` function */
+  /* Create reusable `calculatePrice` function */
 function calculatePrice(basket = []) {
   let total = 0;
   basket.forEach(item => {
@@ -33,10 +32,10 @@ function calculatePrice(basket = []) {
   });
   return total
 }
-/* Execute */
+  /* Execute */
 console.log(passFunctionAsArgument(calculatePrice))
 
-/* In another function that reuse `calculatePrice` */
+  /* In another function that reuse `calculatePrice` */
 function calculatePriceVATIncluded(basket) {
   return calculatePrice(basket) * 1.07;
 }
@@ -44,5 +43,3 @@ console.log(calculatePriceVATIncluded([
   { price: 30, count: 4 },
   { price: 4, count: 12 }
 ]))
-
-
